@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS petMatch_db;
-CREATE DATABASE petMatch_db;

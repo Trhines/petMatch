@@ -1,20 +1,9 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
-let sequelize
-console.log(process.env.DB_NAME)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/petMatch', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
-sequelize = new Sequelize(
-    "petMatch_db",
-    "root",
-    "Greeksaregeeks1!",
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-        password: '',
-        port: 3306
-    }
-);
-
-
-module.exports = sequelize
+module.exports = mongoose.connection;

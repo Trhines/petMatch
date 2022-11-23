@@ -1,60 +1,35 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const mongoose = require("mongoose")
+const bcrypt = require('bcrypt')
 
-class User extends Model {}
+const Schema = mongoose.Schema;
 
-User.init(
-   {
-       email: {
-        type: DataTypes.STRING(100),
-          allowNull: false,
-          unique: true,
-          primaryKey: true,
-          validate: {
-            isEmail: true,
-          },
-       },
-
-       user_name: {
-        type: DataTypes.STRING,
-            allowNull: false
-       },
-
-       password: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          // validate: {
-          //   len: [8],
-          // },
-       },
-
-       liked_dogs: {
-            type: DataTypes.STRING(3000),
-            allowNull: true,
-            defaultValue: '[]'
-       },
-       
-       linked_account: {
-         type: DataTypes.STRING,
-         allowNull: true,
-         references: {
-          model: 'user',
-          key: 'email',
-          unique: false
-        },
-
-         validate: {
-          isEmail: true,
-        },
-       }
-   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user'
+const userSchema = new Schema({
+  email: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: "Name of type string required for user"
+  },
+  password: {
+    type: String,
+    required: "Password of type string required for user"
+  },
+  name:{
+    type: String,
+    default: "none"
   }
-);
+})
+
+userSchema.pre('save', async function(next) {
+  if(this.isNew || this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10)
+  }
+})
+
+userSchema.methods.checkPassword = async function (password){
+  return await bcrypt.compare(password, this.password)
+}
+
+const User = mongoose.model("User", userSchema)
 
 module.exports = User;
