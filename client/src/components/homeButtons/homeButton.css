@@ -1,0 +1,30 @@
+.homeButton{
+    max-width: 10rem;
+    min-width: 10rem;
+    /* this works leave it */
+    min-height: 15rem;
+    max-height: 12rem;
+    margin: .5em;
+}
+
+.imageContainer{
+    width: 50%;
+    height: 100px;;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.thumbContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.homeButton:hover{
+    box-shadow: 0px 2px 5px grey;
+}
+
+@media only screen and (min-width: 600px) {
+    .homeButton {
+      max-width: 15rem;
+    }
+  }

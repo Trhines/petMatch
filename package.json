@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Pet Placer done right",
   "main": "index.js",
-  "proxy": "http://localhost:4000",
   "dependencies": {
     "apollo-boost": "^0.4.9",
     "graphql": "^16.6.0",
