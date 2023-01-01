@@ -2,9 +2,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config');
 
-class Preferences extends Model {}
+class Pet extends Model {}
 
-Preferences.init(
+Pet.init(
   {
     id: {
         type: DataTypes.UUID,
@@ -74,14 +74,6 @@ Preferences.init(
 
     distance:{
         type: DataTypes.INTEGER
-    },
-    
-    user_id: {
-        type: DataTypes.UUID,
-        references:{
-            model: 'User',
-            key: 'id'
-        }
     }
   },
   {
@@ -89,8 +81,8 @@ Preferences.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Prefences',
+    modelName: 'Pet',
   }
 );
 
-module.exports = Preferences;
+module.exports = Pet;
