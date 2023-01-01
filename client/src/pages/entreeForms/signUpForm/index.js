@@ -5,17 +5,19 @@ import FormWrapper from '../formWrapper'
 import { CREATE_ACCOUNT } from '../../../utils/mutations'
 import { useMutation } from '@apollo/client'
 import { hasSpecialChar, isValidEmail, meetsLengthReq } from '../../../utils/stringValidation';
+import { useNavigate } from 'react-router-dom'
 import "./index.css";
 
 const SignUpForm = () => {
 
     const [createAccount, {data, loading, error }] = useMutation(CREATE_ACCOUNT)
 
-
     const [checkValidity, setCheckValidity] = useState(false)
     const [inValidPass, setInValidPass] = useState(false)
     const [inValidEmail, setInValidEmail] = useState(false)
     const [inValidName, setInValidName] = useState(false)
+
+    const Navigate = useNavigate()
 
 
     const checkEmail = (email) => {
@@ -53,7 +55,7 @@ const SignUpForm = () => {
         if ((!inValidEmail) && (!inValidPass) && (!inValidName)) {
 
             let res = await createAccount({ variables: { email: email, password: password, name: name } });
-            console.log(res)
+            Navigate('/login')
             
         } else { console.log("form is no bueno") }
     }
