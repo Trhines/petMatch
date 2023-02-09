@@ -1,6 +1,9 @@
 {
   "name": "petmatch",
   "version": "1.0.0",
+  "engines":{
+    "node": "14.16.1"
+  },
   "description": "Pet Placer done right",
   "main": "index.js",
   "dependencies": {
