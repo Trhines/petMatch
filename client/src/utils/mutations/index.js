@@ -9,3 +9,12 @@ export const CREATE_ACCOUNT = gql`
         }
     }
 `
+
+export const SAVE_PREFERENCES = gql`
+    mutation savePreference($animalType: String!, $breed: String,){
+        savePreference(animalType: $animalType, breed: $breed){
+            animalType
+            breed
+        }
+    }
+`

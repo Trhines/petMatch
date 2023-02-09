@@ -15,7 +15,6 @@ Preferences.init(
 
     animalType:{
         type: DataTypes.STRING,
-        defaultValue:''
     },
 
     breed:{
@@ -77,7 +76,7 @@ Preferences.init(
     },
     
     user_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.UUIDV4,
         references:{
             model: 'User',
             key: 'id'

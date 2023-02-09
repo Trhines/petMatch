@@ -18,8 +18,8 @@ module.exports = {
         return req
     },
 
-    signToken: function ({ email }){
-        payload = { email }
+    signToken: function ({ id }){
+        payload = { id }
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration })
     }
 }

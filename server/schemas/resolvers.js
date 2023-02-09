@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Preferences } = require('../models')
 const { AuthenticationError } = require('apollo-server-express')
 const { signToken } = require('../utils/auth')
 
@@ -21,6 +21,14 @@ const resolvers = {
             } else {
                 throw new AuthenticationError('incorrect password')
             }
+        },
+
+        getPreferences: async (parent, args, context) => {
+            console.log("query")
+            console.log(context.user.id)
+            const currnetPref = await Preferences.findOne({where: {user_id: context.user.id}})
+            console.log("--------------------------")
+            console.log(currnetPref)
         }
     },
 
@@ -29,6 +37,13 @@ const resolvers = {
             console.log(email, password, name)
             const newUser = User.create({email: email, password: password, name: name})
             return newUser
+        },
+
+        savePreference: async (parent, {animalType, breed}, context) => {
+            console.log(animalType, breed)
+            console.log(context.user.id)
+            let newPreference = await Preferences.create({user_id: context.user.id, animalType: animalType, breed: breed})
+            return newPreference
         }
     }
 }

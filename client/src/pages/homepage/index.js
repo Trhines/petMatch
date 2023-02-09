@@ -9,11 +9,6 @@ import './index.css'
 
 const HomePage = () => {
 
-    // const route = (link) => {
-    //     console.log("routing to " + link)
-    //     navgiate(link)
-    // }
-
     return (
         <div>
             <Header />

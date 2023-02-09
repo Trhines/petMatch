@@ -30,3 +30,12 @@ export const QUERY_ALL_USERS = gql`
         }
     }
 `
+
+export const GET_PREFERENCES = gql`
+    query getPreferences {
+        getPreferences{
+            animalType
+            breed
+        }
+    }
+`

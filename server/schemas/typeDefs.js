@@ -13,13 +13,20 @@ const typeDefs = gql`
         user: User!
     }
 
+    type Preference {
+        animalType: String!
+        breed: String
+    }
+
     type Query {
         me: User
         login(email: String!, password: String!): Auth
+        getPreferences: Preference
     }
 
     type Mutation {
         createAccount(email: String, password: String, name: String): User
+        savePreference(animalType: String!, breed: String): Preference
     }
 `
 
