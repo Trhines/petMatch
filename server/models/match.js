@@ -7,7 +7,7 @@ Match.init(
   {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUID,
       primaryKey: true,
     },
 

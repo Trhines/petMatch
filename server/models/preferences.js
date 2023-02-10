@@ -8,7 +8,7 @@ Preferences.init(
   {
     id: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUID,
         allowNull: false,
         primaryKey: true
     },
@@ -76,7 +76,7 @@ Preferences.init(
     },
     
     user_id: {
-        type: DataTypes.UUIDV4,
+        type: DataTypes.UUID,
         references:{
             model: 'User',
             key: 'id'

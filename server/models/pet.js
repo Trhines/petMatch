@@ -8,7 +8,7 @@ Pet.init(
   {
     id: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUID,
         allowNull: false,
         primaryKey: true
     },
