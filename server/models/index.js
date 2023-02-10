@@ -1,7 +1,7 @@
 const User = require('./user')
 const Preferences = require('./preferences')
 const Group = require('./group')
-const Pet = require('./Pet')
+const Pet = require('./pet')
 const Like = require('./like')
 const Match = require('./Match')
 
