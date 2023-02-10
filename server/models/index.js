@@ -3,7 +3,7 @@ const Preferences = require('./preferences')
 const Group = require('./group')
 const Pet = require('./pet')
 const Like = require('./like')
-const Match = require('./Match')
+const Match = require('./match')
 
 
 User.hasOne(Preferences, {
